@@ -3,40 +3,37 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.ArrayList;
 
-/** Created by Mike Fernandez on 7/14/2017 */
+/** Created by Angel Fernandez on 7/14/2017 */
 
 public class AnimationList {
-    ArrayList<Animation> animations;
+   static ArrayList<Animation> animations;
 
-    public AnimationList(){
+    public static void load(){
         animations = new ArrayList<Animation>();
+        add("falling-Sheet.png", 2, 2);
     }
 
-    public void addSpriteSheet(String SpriteLocation, int SpriteSheetSize, int SpriteSize){
-        
-        //CAN ONLY ADD SQUARE SPRITESHEETS AND SQUARE SPRITES
-        
-        Texture spriteSheet = new Texture(SpriteLocation);
+    public static void add(String SpriteSheet, int Columns, int Rows, float Speed){
 
-        TextureRegion[][] tmpFrames = TextureRegion.split(spriteSheet, SpriteSize, SpriteSize);
+        Texture spriteSheet = new Texture(SpriteSheet);
+        int width = spriteSheet.getWidth();
+        int height = spriteSheet.getHeight();
 
-        TextureRegion[] animationFrames = new TextureRegion[4];
+        TextureRegion[][] tmp = TextureRegion.split(spriteSheet, width / Columns, height / Rows);
+
+        TextureRegion[] animationFrames = new TextureRegion[Columns * Rows];
         int index = 0;
 
-        for (int i = 0; i < SpriteSheetSize; i++){
-            for(int j = 0; j < SpriteSheetSize; j++) {
-                animationFrames[index++] = tmpFrames[j][i];
+        for (int i = 0; i < Rows; i++){
+            for(int j = 0; j < Columns; j++) {
+                animationFrames[index++] = tmp[j][i];
             }
         }
 
-        animations.add(new Animation(1f/4f,animationFrames)); //add to list
+        animations.add(new Animation(Speed, animationFrames));
     }
 
-    public int getSize(){
-        return animations.size();
-    }
-
-    public Animation getAnimation(int AnimationIndex){
+    public static Animation get(int AnimationIndex){
         return animations.get(AnimationIndex);
     }
 
