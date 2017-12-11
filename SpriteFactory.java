@@ -1,7 +1,6 @@
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import java.util.ArrayList;
 
 /** Created by Angel Fernandez on 7/14/2017 */
 public class SpriteFactory {
