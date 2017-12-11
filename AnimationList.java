@@ -3,10 +3,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.ArrayList;
 
-/**
- * Created by Angel Fernandez on 11/24/2017.
- */
-public class Animations {
+/** Created by Angel Fernandez on 11/24/2017. */
+public class AnimationList {
 
     private static ArrayList<Animation> animations;
     private static final int fps = 7;
