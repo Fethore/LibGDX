@@ -4,37 +4,24 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.ArrayList;
 
 /** Created by Angel Fernandez on 11/24/2017. */
-public class AnimationList {
+public class AnimationFactory {
 
-    private static ArrayList<Animation> animations;
-    private static final int fps = 7;
+    public static int FPS = 10;
 
-    public static void load() {
-        animations = new ArrayList<Animation>();
+    public static Animation create(String Location) {
+        return create(Location, false);
     }
 
-    //============================================================================================= PUBLIC
-    private static void add(String SpriteSheet) {
-        animations.add(create(SpriteSheet, false));
-    }
-
-    public static Animation get(int AnimationIndex) {
-        return animations.get(AnimationIndex);
-    }
-
-    public static Animation create(String SpriteSheet) {
-        return create(SpriteSheet, false);
-    }
-
-    public static Animation create(String SpriteSheet, boolean Flip) {
-        Texture spriteSheet = new Texture(SpriteSheet);
+    public static Animation create(String Location, boolean Flip) {
+        Texture spriteSheet = new Texture(Location);
         TextureRegion[][] tmp = createTextureRegion(spriteSheet);
         int length = countFrames(spriteSheet);
-        if (Flip) { tmp = flipTextures(tmp, length);}
-        return new Animation(Speed(length), createAnimationFrames(tmp, length));
+        if (Flip) {
+            tmp = flipTextures(tmp, length);
+        }
+        return new Animation(getSpeed(length), createAnimationFrames(tmp, length));
     }
 
-    //============================================================================================= PRIVATE
     private static TextureRegion[] createAnimationFrames(TextureRegion[][] Textures, int Length) {
         TextureRegion[] animationFrames = new TextureRegion[Length];
         int index = 0;
@@ -60,8 +47,7 @@ public class AnimationList {
         return Textures;
     }
 
-    private static float Speed(int Length) {
-        return (Length) * (.1f / fps);
+    private static float getSpeed(int Length) {
+        return (Length) * (.1f / FPS);
     }
-
 }
