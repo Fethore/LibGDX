@@ -3,7 +3,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /** Created by Angel Fernandez on 11/24/2017. */
-public class AnimationFactory {
+public class AnimationCreator {
 
     public static int FPS = 10;
 
