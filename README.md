@@ -1,2 +1,2 @@
 # LibGDX
-Expansions on the LibGDX Framework
+Expansions on the LibGDX Framework.
