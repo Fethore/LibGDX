@@ -22,7 +22,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
- * Created by Angel Fernandez on 12/6/2017.
+ * Angel Fernandez
+ * 12/6/2017.
  */
 public class AnimationCreator {
 
